@@ -1,0 +1,4 @@
+Django==3.2.7
+PyMySQL==1.0.2
+schedule==0.6.0
+jsonschema==3.2.0
