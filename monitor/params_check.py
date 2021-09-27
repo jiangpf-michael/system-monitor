@@ -75,8 +75,7 @@ def check_get_params_of_jobs(data):
         CONST.PROPERTIES: {
             CONST.PAGE_NUM: {
                 CONST.TYPE: CONST.STRING,
-                CONST.MIN_LENGTH: 1,
-                CONST.MAX_LENGTH: 3
+                CONST.MIN_LENGTH: 1
             },
             CONST.PAGE_SIZE: {
                 CONST.TYPE: CONST.STRING,

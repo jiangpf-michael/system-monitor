@@ -106,7 +106,7 @@ class Jobs(BaseView):
                 return self.failure(error_code=CODE_CONST.PARAM_ERROR, reason=CODE_CONST.PARAM_ERROR_MESSAGE)
             page_size, page_num = get_page_param(params)
             jobs = Job.objects.all().order_by("-create_time")
-            paginator = Paginator(jobs, page_size)  # Show 25 contacts per page.
+            paginator = Paginator(jobs, page_size)
             job_list = paginator.get_page(page_num)
             result = []
             for job in job_list:

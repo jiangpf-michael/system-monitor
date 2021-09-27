@@ -6,7 +6,7 @@ from monitor.utils import get_current_timestamp
 
 class Job(models.Model):
     task_id = models.IntegerField(unique=True)
-    job_name = models.CharField(max_length=128)
+    job_name = models.CharField(max_length=128, db_index=True)
     healthy = models.IntegerField(default=0)
     next_trigger_time = models.BigIntegerField(db_index=True)
     create_time = models.BigIntegerField(default=get_current_timestamp(), db_index=True)
