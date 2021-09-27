@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'SystemMonitor.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # 数据库驱动
-        'NAME': 'butter',  # 数据库名
-        'USER': 'root',  # 用户名
-        'PASSWORD': 'jiangpf',  # 密码
+        'NAME': 'xxx',  # 数据库名
+        'USER': 'xxx',  # 用户名
+        'PASSWORD': 'xxx',  # 密码
         'HOST': '127.0.0.1',  # 主机ip
         'PORT': '3306'  # 数据库端口号
     }
