@@ -4,7 +4,7 @@
 """
 
 @Author     : jiangpf
-@Contact    : jiangpf@touchdata.io
+@Contact    : jiangpengfei573@163.com
 @File       : const.py
 @Datetime   : 2021/9/27
 @Site       :
@@ -54,7 +54,16 @@ class _CommonConst:
     JOB_NAME = "job_name"
     JOB_ID = "job_id"
     NEXT_TRIGGER_TIME = "next_trigger_time"
+    STATUS = "status"
     REMARK = "remark"
+    HEALTHY = "healthy"
+    IP_ADDRESS = "ip_address"
+    PAGE_SIZE = "page_size"
+    PAGE_NUM = "page_num"
+    TASK_ID = "task_id"
+    ID = "id"
+
+    INTERVAL = "interval"
 
 
 CONST = _CommonConst()

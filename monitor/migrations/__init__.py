@@ -4,7 +4,7 @@
 """
 
 @Author     : jiangpf
-@Contact    : jiangpf@touchdata.io
+@Contact    : jiangpengfei573@163.com
 @File       : __init__.py.py
 @Datetime   : 2021/9/27
 @Site       :

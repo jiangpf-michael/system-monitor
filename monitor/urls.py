@@ -4,7 +4,7 @@
 """
 
 @Author     : jiangpf
-@Contact    : jiangpf@touchdata.io
+@Contact    : jiangpengfei573@163.com
 @File       : urls.py
 @Datetime   : 2021/9/26
 @Site       :
@@ -13,11 +13,12 @@
 """
 from django.urls import path
 
-from monitor import views
 # from monitor.views import Register
-from monitor.views import Register
+from monitor.views import Register, Report, Jobs
 
-urlpatterns = [path('index', views.index, name='index'),
-               path('register', Register.as_view(), name='register'),
-               # path('register', views.register, name='register')
-               ]
+urlpatterns = [
+    path('register', Register.as_view(), name='register'),
+    path('report', Report.as_view(), name='report'),
+    path('jobs', Jobs.as_view(), name='jobs'),
+    # path('register', views.register, name='register')
+]

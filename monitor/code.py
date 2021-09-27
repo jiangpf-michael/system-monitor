@@ -4,7 +4,7 @@
 """
 
 @Author     : jiangpf
-@Contact    : jiangpf@touchdata.io
+@Contact    : jiangpengfei573@163.com
 @File       : code.py
 @Datetime   : 2021/9/27
 @Site       :
@@ -22,6 +22,8 @@ class _CodeConst:
     SYSTEM_ERROR_MESSAGE = "SYSTEM ERROR"
     PARAM_ERROR = "10001"
     PARAM_ERROR_MESSAGE = "PARAM ERROR"
+    OPERATION_ERROR = "10002"
+    OPERATION_ERROR_MESSAGE = "RECORD EXISTED"
 
 
 
