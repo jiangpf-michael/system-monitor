@@ -4,30 +4,47 @@
 """
 
 @Author     : jiangpf
-@Contact    : jiangpf@touchdata.io
+@Contact    : jiangpengfei573@163.com
 @File       : service.py
 @Datetime   : 2021/9/27
 @Site       :
 @Software   : PyCharm
 
 """
-from monitor.code import CODE_CONST
-from monitor.const import CONST
+import logging
+
+from django.conf import settings
+from django.core.mail import send_mail
+
 from monitor.models import Job
+from monitor.utils import get_current_timestamp
 
 
-def register_job(params):
-    job_id = params.get(CONST.JOB_ID)
-    job_name = params.get(CONST.JOB_NAME)
-    next_trigger_time = params.get(CONST.NEXT_TRIGGER_TIME)
-    remark = params.get(CONST.REMARK) or "",
-    job = Job.objects.filter(job_id=job_id)
-    if not job:
-        job = Job(job_id=job_id, job_name=job_name, next_trigger_time=next_trigger_time, remark=remark)
-    else:
-        job.job_id = job_id
-        job.job_name = job_name
-        job.next_trigger_time = next_trigger_time
-        job.remark = remark
-    job.save()
-    return {CONST.RESULT: CONST.SUCCESS, CONST.CODE: CODE_CONST.SUCCESS_CODE}
+def check_healthy_of_jobs():
+    logging.info('START check healthy of jobs')
+    try:
+        current_timestamp = get_current_timestamp()
+        jobs = Job.objects.filter(next_trigger_time__lt=current_timestamp)
+        for job in jobs:
+            job.healthy = 0
+            job.update_time = get_current_timestamp()
+            job.save()
+    except Exception as e:
+        logging.error('ERROR check healthy of jobs, error info: {}'.format(str(e)))
+    logging.info('FINISH check healthy of jobs')
+
+
+def send_unhealthy_email():
+    logging.info('START send unhealthy email')
+    try:
+        jobs = Job.objects.filter(healthy=0)
+        if not jobs:
+            return
+        subject = 'Unhealthy job notify'
+        message = "The following jobs are unhealthy, please check: \n"
+        for job in jobs:
+            message += "job_id: {}, job_name: {} \n".format(job.id, job.job_name)
+        send_mail(subject, message, settings.EMAIL_FROM, settings.EMAIL_RECEIVER)
+    except Exception as e:
+        logging.error('ERROR send unhealthy email, error info: {}'.format(str(e)))
+    logging.info('FINISH send unhealthy email')

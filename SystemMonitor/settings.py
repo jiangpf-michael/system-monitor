@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'monitor'
+    'monitor',
+    'django_apscheduler'
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,17 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 发送Email配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+
+# 发送邮件的邮箱
+EMAIL_HOST_USER = 'xxx'  # 邮箱名
+# 邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = 'xxx'  # 授权码
+# 收件人看到的发件人
+EMAIL_FROM = 'xxx<xxx@163.com>'
+# 收件人列表
+EMAIL_RECEIVER = ['xxx']

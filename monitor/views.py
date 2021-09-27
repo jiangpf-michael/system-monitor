@@ -11,6 +11,7 @@ from monitor.code import CODE_CONST
 from monitor.const import CONST
 from monitor.models import Job, JobInfo
 from monitor.params_check import check_post_params_of_register, check_put_params_of_job, check_get_params_of_jobs
+from monitor.scheduler_task import start_scheduler
 from monitor.utils import get_dict, get_params_of_get_request, get_page_param, get_current_timestamp
 
 
@@ -120,3 +121,6 @@ class Jobs(BaseView):
             logging.error(f"ERROR received GET request of JOBS from ip: {request.META.get(CONST.REMOTE_ADDR)}, "
                           f"params: {request.GET}, error info: {str(e)}")
             return self.failure(error_code=CODE_CONST.SYSTEM_ERROR, reason=CODE_CONST.SYSTEM_ERROR_MESSAGE)
+
+
+start_scheduler()
