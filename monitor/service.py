@@ -44,7 +44,7 @@ def send_unhealthy_email():
         message = "The following jobs are unhealthy, please check: \n"
         for job in jobs:
             message += "job_id: {}, job_name: {} \n".format(job.id, job.job_name)
-        send_mail(subject, message, settings.EMAIL_FROM, settings.EMAIL_RECEIVER)
+        return send_mail(subject, message, settings.EMAIL_FROM, settings.EMAIL_RECEIVER)
     except Exception as e:
         logging.error('ERROR send unhealthy email, error info: {}'.format(str(e)))
     logging.info('FINISH send unhealthy email')
